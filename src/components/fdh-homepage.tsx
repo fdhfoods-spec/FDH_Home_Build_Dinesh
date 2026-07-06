@@ -25,7 +25,6 @@ import {
   Store,
   Truck,
   UserRound,
-  UtensilsCrossed,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -38,7 +37,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
