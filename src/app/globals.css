@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --fdh-green: #2e7d32;
+  --fdh-orange: #f57c00;
+  --fdh-section: #f8f9fa;
+  --fdh-accent: #e8f5e9;
+  --fdh-border: #e5e7eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-fdh-green: var(--fdh-green);
+  --color-fdh-orange: var(--fdh-orange);
+  --color-fdh-section: var(--fdh-section);
+  --color-fdh-accent: var(--fdh-accent);
+  --color-fdh-border: var(--fdh-border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #030712;
+    --foreground: #f3f4f6;
+    --fdh-section: #0b1220;
+    --fdh-accent: #10351b;
+    --fdh-border: #1f2937;
+  }
+}
+
+* {
+  border-color: var(--fdh-border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@theme inline {
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
