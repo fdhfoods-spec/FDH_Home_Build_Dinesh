@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --fdh-primary: #2e7d32;
+  --fdh-secondary: #f57c00;
+  --fdh-background: #ffffff;
+  --fdh-section: #f8f9fa;
+  --fdh-accent: #e8f5e9;
+  --fdh-text: #1f2937;
+  --fdh-muted: #6b7280;
+  --fdh-border: #e5e7eb;
+  --fdh-surface: #ffffff;
+  --fdh-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  --radius: 20px;
+}
+
+.dark {
+  --fdh-background: #0b1116;
+  --fdh-section: #111a21;
+  --fdh-accent: #173126;
+  --fdh-text: #ecf0f3;
+  --fdh-muted: #aeb7bf;
+  --fdh-border: #253341;
+  --fdh-surface: #101922;
+  --fdh-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
+}
+
+@theme inline {
+  --color-background: var(--fdh-background);
+  --color-foreground: var(--fdh-text);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-playfair);
+}
+
+* {
+  border-color: var(--fdh-border);
+}
+
+html,
+body {
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(
+      1200px 600px at 90% -5%,
+      color-mix(in oklab, var(--fdh-accent) 80%, transparent),
+      transparent
+    ),
+    var(--fdh-background);
+  color: var(--fdh-text);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+}
+
+.fdh-section-shell {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10;
+}
+
+.fdh-glass {
+  background: color-mix(in oklab, var(--fdh-surface) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.fdh-gradient-text {
+  background: linear-gradient(135deg, var(--fdh-primary), var(--fdh-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.fdh-card-hover {
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.fdh-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--fdh-shadow);
+  border-color: color-mix(in oklab, var(--fdh-primary) 35%, var(--fdh-border));
+}
+
+.fdh-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--fdh-border) 35%, var(--fdh-surface));
+}
+
+.fdh-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, white 55%, transparent),
+    transparent
+  );
+  animation: fdh-shimmer 1.2s infinite;
+}
+
+@keyframes fdh-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@theme inline {
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
